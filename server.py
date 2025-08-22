@@ -12,6 +12,9 @@ def detect_emotion():
 
     result = emotion_detector(text_to_analyze)
 
+    if result["dominant_emotion"] is None:
+        return "Invalid text! Please try again!"
+
     response = (
         f"For the given statement, the system response is "
         f"'anger': {result['anger']}, "
@@ -29,4 +32,5 @@ def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
+
